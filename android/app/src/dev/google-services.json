@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "343874738195",
+    "project_id": "rankai-dev",
+    "storage_bucket": "rankai-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343874738195:android:1dbbe02b2f5266320647e6",
+        "android_client_info": {
+          "package_name": "com.labhouse.rankai.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAznZlKejujc3hztKmG4Se3SStE-HhTPV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

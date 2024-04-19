@@ -1,0 +1,36 @@
+flavors:
+  dev:
+    app:
+      name: "RankAI"
+    android:
+      applicationId: "com.labhouse.rankai.dev"
+    ios:
+      bundleId: "com.labhouse.rankai.dev"
+  preprod:
+    app:
+      name: "RankAI"
+    android:
+      applicationId: "com.labhouse.rankai.preprod"
+    ios:
+      bundleId: "com.labhouse.rankai.preprod"
+  prod:
+    app:
+      name: "RankAI"
+    android:
+      applicationId: "com.labhouse.rankai"
+    ios:
+      bundleId: "com.labhouse.rankai"
+instructions:
+  - assets:download
+  - assets:extract
+  - android:androidManifest
+  - android:buildGradle
+  - android:dummyAssets
+  - ios:xcconfig
+  - ios:buildTargets
+  - ios:schema
+  - ios:dummyAssets
+  - ios:plist
+  - assets:clean
+  # - ide:config
+ide: vscode

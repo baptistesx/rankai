@@ -1,0 +1,119 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Tests",
+      "type": "dart",
+      "request": "launch",
+      "program": "./test/"
+    },
+    {
+      "name": "dev Debug",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "toolArgs": [
+        "--flavor",
+        "dev",
+        "--dart-define-from-file",
+        "assets/config/dev.json"
+      ]
+    },
+    {
+      "name": "dev Profile",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "toolArgs": [
+        "--flavor",
+        "dev",
+        "--dart-define-from-file",
+        "assets/config/dev.json"
+      ]
+    },
+    {
+      "name": "dev Release",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "toolArgs": [
+        "--flavor",
+        "dev",
+        "--dart-define-from-file",
+        "assets/config/dev.json"
+      ]
+    },
+    {
+      "name": "preprod Debug",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "toolArgs": [
+        "--flavor",
+        "preprod",
+        "--dart-define-from-file",
+        "assets/config/preprod.json"
+      ]
+    },
+    {
+      "name": "preprod Profile",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "toolArgs": [
+        "--flavor",
+        "preprod",
+        "--dart-define-from-file",
+        "assets/config/preprod.json"
+      ]
+    },
+    {
+      "name": "preprod Release",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "toolArgs": [
+        "--flavor",
+        "preprod",
+        "--dart-define-from-file",
+        "assets/config/preprod.json"
+      ]
+    },
+    {
+      "name": "prod Debug",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "toolArgs": [
+        "--flavor",
+        "prod",
+        "--dart-define-from-file",
+        "assets/config/prod.json"
+      ]
+    },
+    {
+      "name": "prod Profile",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "toolArgs": [
+        "--flavor",
+        "prod",
+        "--dart-define-from-file",
+        "assets/config/prod.json"
+      ]
+    },
+    {
+      "name": "prod Release",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "toolArgs": [
+        "--flavor",
+        "prod",
+        "--dart-define-from-file",
+        "assets/config/prod.json"
+      ]
+    }
+  ]
+}

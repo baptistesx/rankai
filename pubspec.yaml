@@ -1,0 +1,80 @@
+name: rankai
+description: "Rankai application for Rankai company"
+publish_to: "none"
+version: 0.1.11+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  another_flushbar: ^1.12.30
+  carousel_slider: ^4.2.1
+  collection: ^1.18.0
+  convert: ^3.1.1
+  firebase_analytics: ^10.8.7
+  firebase_core: ^2.25.5
+  flutter:
+    sdk: flutter
+  flutter_form_builder: ^9.1.1
+  flutter_hooks: ^0.20.5
+  flutter_keyboard_visibility: ^5.4.1
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: ^2.0.10
+  form_builder_validators: ^9.1.0
+  freezed_annotation: ^2.4.1
+  go_router: ^13.2.0
+  hooks_riverpod: ^2.5.1
+  http: ^1.2.0
+  intl: ^0.18.1
+  json_annotation: ^4.8.1
+  package_info_plus: ^5.0.1
+  riverpod_annotation: ^2.3.5
+  shared_preferences: ^2.2.2
+  url_launcher: ^6.2.6
+
+dev_dependencies:
+  analyzer: ^6.4.1
+  build_runner: ^2.4.7
+  custom_lint: ^0.5.7
+  flutter_flavorizr:
+    git:
+      url: https://github.com/AngeloAvv/flutter_flavorizr.git
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^3.0.1
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.4.5
+  go_router_builder: ^2.3.4
+  json_serializable: ^6.7.1
+  riverpod_generator: ^2.3.3
+  riverpod_lint: ^2.3.8
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/Manrope/Manrope-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Manrope/Manrope-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Manrope/Manrope-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Manrope/Manrope-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Manrope/Manrope-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Manrope/Manrope-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Manrope/Manrope-ExtraBold.ttf
+          weight: 800
+
+flutter_intl:
+  enabled: true
+  main_locale: en
+  arb_dir: lib/core/l10n
