@@ -14,9 +14,13 @@ class RankingsHistory extends _$RankingsHistory {
 
     newState.add(ranking);
 
+    // Convertir la liste des rankings en JSON avant de l'enregistrer
+    final String rankingsHistoryJson = json
+        .encode(newState.map((Ranking ranking) => ranking.toJson()).toList());
+
     await ref
         .read(sharedPreferencesProvider)
-        .setString('rankingsHistory', json.encode(newState));
+        .setString('rankingsHistory', rankingsHistoryJson);
 
     state = AsyncData<List<Ranking>>(newState);
   }
@@ -33,8 +37,9 @@ class RankingsHistory extends _$RankingsHistory {
         return <Ranking>[];
       }
 
-      return (json.decode(rankingsHistoryString) as List<dynamic>)
-          .map((dynamic e) => Ranking.fromJson(e))
+      // Décoder la chaîne JSON en liste d'objets Ranking
+      return (json.decode(rankingsHistoryString) as List)
+          .map((e) => Ranking.fromJson(e as Map<String, dynamic>))
           .toList();
     } catch (e) {
       rethrow;

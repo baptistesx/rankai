@@ -1,7 +1,7 @@
 name: rankai
-description: "Rankai application for Rankai company"
+description: "RankAI application for Labhouse recruitment process"
 publish_to: "none"
-version: 0.1.11+1
+version: 0.1.0+1
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
@@ -12,7 +12,6 @@ dependencies:
   carousel_slider: ^4.2.1
   collection: ^1.18.0
   convert: ^3.1.1
-  firebase_analytics: ^10.8.7
   firebase_core: ^2.25.5
   flutter:
     sdk: flutter
@@ -32,7 +31,6 @@ dependencies:
   package_info_plus: ^5.0.1
   riverpod_annotation: ^2.3.5
   shared_preferences: ^2.2.2
-  url_launcher: ^6.2.6
 
 dev_dependencies:
   analyzer: ^6.4.1

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:rankai/core/providers/package_info.dart';
 import 'package:rankai/core/router/routes.dart';
 import 'package:rankai/core/theme/extensions/text_extensions.dart';
 import 'package:rankai/core/theme/rankai_palette.dart';
@@ -14,14 +17,13 @@ class RightAngledTrianglePainter extends CustomPainter {
     final double height = size.height;
 
     final Path path = Path();
-    path.moveTo(0, height); // Bas gauche
-    path.lineTo(width, height); // Bas droit
-    path.lineTo(width, height - 200); // Haut droit (angle droit ici)
-    path.close(); // Reviens au point de départ pour fermer le chemin
+    path.moveTo(0, height); // bottom left
+    path.lineTo(width, height); // bottom right
+    path.lineTo(width, height - 200); // top right
+    path.close(); // close the path
 
-    final Paint paint = Paint()
-      ..color = RankaiPalette.mainBlue; // Définir la couleur du triangle
-    canvas.drawPath(path, paint); // Dessiner le triangle sur le canevas
+    final Paint paint = Paint()..color = RankaiPalette.mainBlue;
+    canvas.drawPath(path, paint);
   }
 
   @override
@@ -57,7 +59,7 @@ class WelcomePage extends StatelessWidget {
                   'assets/images/logo.svg',
                 ),
                 Text(
-                  'RankAI',
+                  S.of(context).appTitle,
                   style: RankaiTextStyles.heading1,
                 ),
                 sizedBoxH12,
@@ -66,8 +68,8 @@ class WelcomePage extends StatelessWidget {
                   style: RankaiTextStyles.pMediumRegular,
                 ),
                 sizedBoxH64,
-                const Text(
-                  'Get any kind of ranking as the best movies of 2023, the best books for entrepreneurs in few seconds thanks to Chat GPT 4.',
+                Text(
+                  S.of(context).appDescription,
                 ),
                 const Spacer(),
                 Align(
@@ -75,6 +77,19 @@ class WelcomePage extends StatelessWidget {
                   child: NextButton(
                     onPressed: () => const SearchRoute().go(context),
                   ),
+                ),
+                Consumer(
+                  builder:
+                      (BuildContext context, WidgetRef ref, Widget? child) {
+                    final PackageInfo packageInfo =
+                        ref.read(packageInfoProvider);
+                    return Text(
+                      'V${packageInfo.version}',
+                      style: RankaiTextStyles.pRegularSemiBold.copyWith(
+                        color: RankaiPalette.midGrey,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

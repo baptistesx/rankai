@@ -33,7 +33,7 @@ class Client {
     final Uri uri = Uri.parse('$backendUrl$endpoint');
     final Map<String, String> headers = <String, String>{
       'Content-Type': 'application/json',
-      if (token != null) 'Authorization': 'Bearer $token', // TODO
+      if (token != null) 'Authorization': 'Bearer $token',
     };
     return httpClient.post(uri, headers: headers, body: body);
   }

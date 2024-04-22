@@ -8,19 +8,50 @@ part 'ranking_details.g.dart';
 @Riverpod(keepAlive: true)
 class RankingDetails extends _$RankingDetails {
   @override
-  Future<Ranking> build({required String userPrompt}) async {
+  Future<Ranking> build({String? userPrompt, String? id}) async {
     try {
-      state = const AsyncLoading<Ranking>();
+      if (id != null) {
+        // Retrieve the list of rankings from the rankingsHistoryProvider
+        final AsyncValue<List<Ranking>> rankingsHistory =
+            ref.read(rankingsHistoryProvider);
 
-      final Ranking ranking = await ref
-          .read(rankingRepositoryProvider)
-          .getRanking(userPrompt: userPrompt);
+        // Find the ranking with the matching ID
+        final Ranking selectedRanking =
+            (rankingsHistory.value as List<Ranking>).firstWhere(
+          (Ranking ranking) => ranking.id == id,
+        );
 
-      ref.read(rankingsHistoryProvider.notifier).addRanking(ranking);
+        return selectedRanking;
+      } else {
+        state = const AsyncLoading<Ranking>();
 
-      return ranking;
+        final Ranking ranking = await ref
+            .read(rankingRepositoryProvider)
+            .getRanking(userPrompt: userPrompt!);
+
+        ref.read(rankingsHistoryProvider.notifier).addRanking(ranking);
+
+        return ranking;
+      }
     } catch (e) {
       rethrow;
+    }
+  }
+
+  void selectRankingFromHistory(String id) {
+    // Retrieve the list of rankings from the rankingsHistoryProvider
+    final AsyncValue<List<Ranking>> rankingsHistory =
+        ref.read(rankingsHistoryProvider);
+
+    if (rankingsHistory.value != null) {
+      // Find the ranking with the matching ID
+      final Ranking selectedRanking =
+          (rankingsHistory.value as List<Ranking>).firstWhere(
+        (Ranking ranking) => ranking.id == id,
+      );
+
+      // Check if a ranking was found and update the state
+      state = AsyncData<Ranking>(selectedRanking);
     }
   }
 }

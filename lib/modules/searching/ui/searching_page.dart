@@ -10,6 +10,7 @@ import 'package:rankai/core/theme/extensions/text_extensions.dart';
 import 'package:rankai/core/theme/rankai_palette.dart';
 import 'package:rankai/core/widgets/app_sizes.dart';
 import 'package:rankai/core/widgets/toast.dart';
+import 'package:rankai/generated/l10n.dart';
 
 class SearchingPage extends ConsumerStatefulWidget {
   final String userPrompt;
@@ -36,49 +37,55 @@ class _SearchingPageState extends ConsumerState<SearchingPage>
           title: 'Error',
           text: next.error.toString(),
         );
-        // const SearchRoute().go(context);
+        const SearchRoute().go(context);
       } else {
-        ResultsRoute(userPrompt: widget.userPrompt).go(context);
+        ResultsRoute(userPrompt: widget.userPrompt).go(
+          context,
+        );
       }
     });
 
-    return Scaffold(
-      backgroundColor: RankaiPalette.mainBlue,
-      body: Padding(
-        padding: const EdgeInsets.all(32.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            AnimatedBuilder(
-              animation: _controller,
-              builder: (_, Widget? child) {
-                return Transform.rotate(
-                  angle: _controller.value * 2 * math.pi,
-                  child: child,
-                );
-              },
-              child: SvgPicture.asset(
-                'assets/images/logo.svg',
-                colorFilter:
-                    const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: RankaiPalette.mainBlue,
+        body: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              AnimatedBuilder(
+                animation: _controller,
+                builder: (_, Widget? child) {
+                  return Transform.rotate(
+                    angle: _controller.value * 2 * math.pi,
+                    child: child,
+                  );
+                },
+                child: SvgPicture.asset(
+                  'assets/images/logo.svg',
+                  colorFilter:
+                      const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                ),
               ),
-            ),
-            sizedBoxH32,
-            RichText(
-              text: TextSpan(
-                text: 'Getting the best ranking, ',
-                style: RankaiTextStyles.heading3.copyWith(color: Colors.white),
-                children: <InlineSpan>[
-                  TextSpan(
-                    text: 'just for you...',
-                    style: RankaiTextStyles.heading3
-                        .copyWith(color: RankaiPalette.darkGrey),
-                  ),
-                ],
+              sizedBoxH32,
+              RichText(
+                text: TextSpan(
+                  text: S.of(context).searchingPageMessagePartOne,
+                  style:
+                      RankaiTextStyles.heading3.copyWith(color: Colors.white),
+                  children: <InlineSpan>[
+                    TextSpan(
+                      text: S.of(context).searchingPageMessagePartTwo,
+                      style: RankaiTextStyles.heading3
+                          .copyWith(color: RankaiPalette.darkGrey),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -90,12 +97,4 @@ class _SearchingPageState extends ConsumerState<SearchingPage>
 
     super.dispose();
   }
-
-  // @override
-  // void initState() {
-  //   Timer(const Duration(seconds: 3), () {
-  //     const ResultsRoute().go(context);
-  //   });
-  //   super.initState();
-  // }
 }

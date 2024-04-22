@@ -15,30 +15,15 @@ import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 import 'package:intl/src/intl_helpers.dart';
-import 'package:rankai/generated/intl/messages_en.dart' as messages_en;
-import 'package:rankai/generated/intl/messages_fr.dart' as messages_fr;
 
-Map<String, LibraryLoader> _deferredLibraries = <String, LibraryLoader>{
+import 'messages_en.dart' as messages_en;
+import 'messages_fr.dart' as messages_fr;
+
+typedef Future<dynamic> LibraryLoader();
+Map<String, LibraryLoader> _deferredLibraries = {
   'en': () => new SynchronousFuture(null),
   'fr': () => new SynchronousFuture(null),
 };
-
-/// User programs should call this before using [localeName] for messages.
-Future<bool> initializeMessages(String localeName) {
-  final String? availableLocale = Intl.verifiedLocale(
-    localeName,
-    (String locale) => _deferredLibraries[locale] != null,
-    onFailure: (_) => null,
-  );
-  if (availableLocale == null) {
-    return new SynchronousFuture(false);
-  }
-  final LibraryLoader? lib = _deferredLibraries[availableLocale];
-  lib == null ? new SynchronousFuture(false) : lib();
-  initializeInternalMessageLookup(() => new CompositeMessageLookup());
-  messageLookup.addLocale(availableLocale, _findGeneratedMessagesFor);
-  return new SynchronousFuture(true);
-}
 
 MessageLookupByLibrary? _findExact(String localeName) {
   switch (localeName) {
@@ -51,11 +36,19 @@ MessageLookupByLibrary? _findExact(String localeName) {
   }
 }
 
-MessageLookupByLibrary? _findGeneratedMessagesFor(String locale) {
-  final String? actualLocale =
-      Intl.verifiedLocale(locale, _messagesExistFor, onFailure: (_) => null);
-  if (actualLocale == null) return null;
-  return _findExact(actualLocale);
+/// User programs should call this before using [localeName] for messages.
+Future<bool> initializeMessages(String localeName) {
+  var availableLocale = Intl.verifiedLocale(
+      localeName, (locale) => _deferredLibraries[locale] != null,
+      onFailure: (_) => null);
+  if (availableLocale == null) {
+    return new SynchronousFuture(false);
+  }
+  var lib = _deferredLibraries[availableLocale];
+  lib == null ? new SynchronousFuture(false) : lib();
+  initializeInternalMessageLookup(() => new CompositeMessageLookup());
+  messageLookup.addLocale(availableLocale, _findGeneratedMessagesFor);
+  return new SynchronousFuture(true);
 }
 
 bool _messagesExistFor(String locale) {
@@ -66,4 +59,9 @@ bool _messagesExistFor(String locale) {
   }
 }
 
-typedef Future<dynamic> LibraryLoader();
+MessageLookupByLibrary? _findGeneratedMessagesFor(String locale) {
+  var actualLocale =
+      Intl.verifiedLocale(locale, _messagesExistFor, onFailure: (_) => null);
+  if (actualLocale == null) return null;
+  return _findExact(actualLocale);
+}

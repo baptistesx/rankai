@@ -20,7 +20,7 @@ class Application extends ConsumerWidget {
         theme: rankaiTheme,
         themeMode: ThemeMode.light,
         routerConfig: router,
-        title: 'Rankai',
+        title: 'RankAI',
         supportedLocales: S.delegate.supportedLocales,
         localizationsDelegates: const <LocalizationsDelegate>[
           S.delegate,

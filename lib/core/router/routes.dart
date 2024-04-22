@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:rankai/modules/history/ui/history_page.dart';
 import 'package:rankai/modules/results/ui/results_page.dart';
 import 'package:rankai/modules/search/ui/search_page.dart';
 import 'package:rankai/modules/searching/ui/searching_page.dart';
@@ -8,23 +7,21 @@ import 'package:rankai/modules/welcome/ui/welcome_page.dart';
 
 part 'routes.g.dart';
 
-class HistoryRoute extends GoRouteData {
-  const HistoryRoute();
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const HistoryPage();
-  }
-}
-
 class ResultsRoute extends GoRouteData {
-  final String userPrompt;
+  final String? userPrompt;
+  final String? rankingId;
 
-  const ResultsRoute({required this.userPrompt});
+  const ResultsRoute({
+    this.userPrompt,
+    this.rankingId,
+  });
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return ResultsPage(userPrompt: userPrompt);
+    return ResultsPage(
+      userPrompt: userPrompt,
+      rankingId: rankingId,
+    );
   }
 }
 
@@ -62,9 +59,6 @@ class SearchRoute extends GoRouteData {
     ),
     TypedGoRoute<ResultsRoute>(
       path: 'results',
-    ),
-    TypedGoRoute<HistoryRoute>(
-      path: 'history',
     ),
   ],
 )

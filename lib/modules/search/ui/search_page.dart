@@ -11,6 +11,7 @@ import 'package:rankai/core/theme/extensions/text_extensions.dart';
 import 'package:rankai/core/theme/rankai_palette.dart';
 import 'package:rankai/core/widgets/app_sizes.dart';
 import 'package:rankai/core/widgets/rankai_elevated_button.dart';
+import 'package:rankai/generated/l10n.dart';
 import 'package:rankai/modules/search/ui/widgets/rankings_history_section.dart';
 
 class SearchPage extends ConsumerStatefulWidget {
@@ -22,7 +23,7 @@ class SearchPage extends ConsumerStatefulWidget {
 
 class _SearchPageState extends ConsumerState<SearchPage> {
   final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
-  String userInput = 'donne moi les 5 meilleurs livres pour entrepreneurs';
+  String userInput = '';
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 ),
                 sizedBoxH32,
                 Text(
-                  'What ranking are you interested for ?',
+                  S.of(context).searchPageCatchPhrase,
                   style:
                       RankaiTextStyles.heading3.copyWith(color: Colors.white),
                   textAlign: TextAlign.center,
@@ -71,10 +72,8 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 sizedBoxH32,
                 FormBuilderTextField(
                   name: 'userPrompt',
-                  initialValue:
-                      'donne moi les 5 meilleurs livres pour entrepreneurs',
-                  decoration: const InputDecoration(
-                    hintText: 'The 10 best books for entrepreneurs',
+                  decoration: InputDecoration(
+                    hintText: S.of(context).searchPageFieldHint,
                     filled: true,
                     fillColor: Colors.white,
                   ),
@@ -90,7 +89,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 ),
                 const Spacer(),
                 RankaiElevatedButton.darkGrey(
-                  title: 'Ranking, please',
+                  title: S.of(context).searchPageGoButton,
                   onPressed: userInput.isEmpty
                       ? null
                       : () {

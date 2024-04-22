@@ -1,4 +1,20 @@
 {
   "@@locale": "fr",
-  "rankaiSlogan": "Providing rankings in seconds"
+  "rankaiSlogan": "Des classements en quelques secondes",
+  "entityCardTitleUnknown": "Inconnu",
+  "entityCardAuthorUnknown": "Inconnu",
+  "entityCardDescriptionUnknown": "Inconnue",
+  "entityCardSeeMoreButton": "Voir plus",
+  "resultPageTitle": "Et voilà",
+  "resultPageOtherRankingButton": "Autre classement",
+  "resultsPageError": "Une erreur est survenue",
+  "lastRankingsSectionTitlePartOne": "Vos derniers ",
+  "lastRankingsSectionTitlePartTwo": "classements",
+  "searchPageCatchPhrase": "Quel classement vous intéresse ?",
+  "searchPageFieldHint": "Les 10 meilleurs livres pour entrepreneurs",
+  "searchPageGoButton": "C'est parti",
+  "searchingPageMessagePartOne": "Obtention du meilleur classement, ",
+  "searchingPageMessagePartTwo": "juste pour vous...",
+  "appTitle": "RankAI",
+  "appDescription": "Obtenez tout type de classement comme les meilleurs films de 2023, les meilleurs livres pour entrepreneurs en quelques secondes grâce à Chat GPT 4."
 }

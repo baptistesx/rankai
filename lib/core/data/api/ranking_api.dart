@@ -85,10 +85,10 @@ class HttpRankingApi implements RankingApi {
                             "price": string?
                           }
             ]}
-      "promptDate" is the current date.
+      "promptDate" is the current date with iso format.
       "id" fields correspond to a uuid you generate, title to the user prompt nicely formatted (following its language), 'prompt' is the total prompt you received from me and 'entitied' correspond to the list of element you have to provide ranked.
       Return only the json needed based on what you knoew, no need of real-time or up-to-date information .
-      Please include all relevant information such as the author, publication date, cover image url, brief description, etc... 
+      Please include all relevant information such as the author, publication date with iso format, cover image url, brief description, etc... 
       For the description field, use the language of the initial prompt between " ".
       Don't give fake or example urls, just real usable urls or don't return the field.
      ''';
