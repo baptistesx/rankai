@@ -37,7 +37,7 @@ class _SearchingPageState extends ConsumerState<SearchingPage>
           title: 'Error',
           text: next.error.toString(),
         );
-        const SearchRoute().go(context);
+        // const SearchRoute().go(context);
       } else {
         ResultsRoute(userPrompt: widget.userPrompt).go(
           context,
@@ -45,47 +45,43 @@ class _SearchingPageState extends ConsumerState<SearchingPage>
       }
     });
 
-    return PopScope(
-      canPop: false,
-      child: Scaffold(
-        backgroundColor: RankaiPalette.mainBlue,
-        body: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (_, Widget? child) {
-                  return Transform.rotate(
-                    angle: _controller.value * 2 * math.pi,
-                    child: child,
-                  );
-                },
-                child: SvgPicture.asset(
-                  'assets/images/logo.svg',
-                  colorFilter:
-                      const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                ),
+    return Scaffold(
+      backgroundColor: RankaiPalette.mainBlue,
+      body: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (_, Widget? child) {
+                return Transform.rotate(
+                  angle: _controller.value * 2 * math.pi,
+                  child: child,
+                );
+              },
+              child: SvgPicture.asset(
+                'assets/images/logo.svg',
+                colorFilter:
+                    const ColorFilter.mode(Colors.white, BlendMode.srcIn),
               ),
-              sizedBoxH32,
-              RichText(
-                text: TextSpan(
-                  text: S.of(context).searchingPageMessagePartOne,
-                  style:
-                      RankaiTextStyles.heading3.copyWith(color: Colors.white),
-                  children: <InlineSpan>[
-                    TextSpan(
-                      text: S.of(context).searchingPageMessagePartTwo,
-                      style: RankaiTextStyles.heading3
-                          .copyWith(color: RankaiPalette.darkGrey),
-                    ),
-                  ],
-                ),
-                textAlign: TextAlign.center,
+            ),
+            sizedBoxH32,
+            RichText(
+              text: TextSpan(
+                text: S.of(context).searchingPageMessagePartOne,
+                style: RankaiTextStyles.heading3.copyWith(color: Colors.white),
+                children: <InlineSpan>[
+                  TextSpan(
+                    text: S.of(context).searchingPageMessagePartTwo,
+                    style: RankaiTextStyles.heading3
+                        .copyWith(color: RankaiPalette.darkGrey),
+                  ),
+                ],
               ),
-            ],
-          ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

@@ -45,8 +45,10 @@ class RankaiTextButton extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        textStyle: MaterialStatePropertyAll(RankaiTextStyles.pRegularSemiBold),
-        foregroundColor: MaterialStatePropertyAll(foregroundColor),
+        textStyle: MaterialStatePropertyAll<TextStyle?>(
+          RankaiTextStyles.pRegularSemiBold,
+        ),
+        foregroundColor: MaterialStatePropertyAll<Color?>(foregroundColor),
       ),
       child: Text(title),
     );

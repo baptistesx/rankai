@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:rankai/core/theme/rankai_palette.dart';
 
 class FontWeight {
-  static const thin = ui.FontWeight.w100;
-  static const extraLight = ui.FontWeight.w200;
-  static const light = ui.FontWeight.w300;
-  static const normal = ui.FontWeight.w400;
-  static const medium = ui.FontWeight.w500;
-  static const semiBold = ui.FontWeight.w600;
-  static const bold = ui.FontWeight.w700;
-  static const extraBold = ui.FontWeight.w800;
-  static const black = ui.FontWeight.w900;
+  static const ui.FontWeight thin = ui.FontWeight.w100;
+  static const ui.FontWeight extraLight = ui.FontWeight.w200;
+  static const ui.FontWeight light = ui.FontWeight.w300;
+  static const ui.FontWeight normal = ui.FontWeight.w400;
+  static const ui.FontWeight medium = ui.FontWeight.w500;
+  static const ui.FontWeight semiBold = ui.FontWeight.w600;
+  static const ui.FontWeight bold = ui.FontWeight.w700;
+  static const ui.FontWeight extraBold = ui.FontWeight.w800;
+  static const ui.FontWeight black = ui.FontWeight.w900;
 }
 
 class RankaiTextStyles {

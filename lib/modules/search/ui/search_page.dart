@@ -37,69 +37,69 @@ class _SearchPageState extends ConsumerState<SearchPage> {
           child: FormBuilder(
             key: formKey,
             onChanged: () {
-              final formValue =
+              final String? formValue =
                   formKey.currentState?.fields['userPrompt']?.value;
-              if (formValue != null &&
-                  formValue is String &&
-                  formValue != userInput) {
+              if (formValue != null && formValue != userInput) {
                 setState(() {
                   userInput = formValue;
                 });
               }
             },
-            child: Column(
-              children: <Widget>[
-                SvgPicture.asset(
-                  'assets/images/logo.svg',
-                  colorFilter:
-                      const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                ),
-                sizedBoxH32,
-                Text(
-                  S.of(context).searchPageCatchPhrase,
-                  style:
-                      RankaiTextStyles.heading3.copyWith(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                sizedBoxH32,
-                res.when(
-                  data: (List<Ranking> data) =>
-                      RankingsHistorySection(rankings: data),
-                  error: (Object error, StackTrace trace) =>
-                      Text(error.toString()),
-                  loading: () => const CircularProgressIndicator(),
-                ),
-                sizedBoxH32,
-                FormBuilderTextField(
-                  name: 'userPrompt',
-                  decoration: InputDecoration(
-                    hintText: S.of(context).searchPageFieldHint,
-                    filled: true,
-                    fillColor: Colors.white,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  SvgPicture.asset(
+                    'assets/images/logo.svg',
+                    colorFilter:
+                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                   ),
-                  keyboardType: TextInputType.text,
-                  style: RankaiTextStyles.pSmallRegular.copyWith(
-                    color: RankaiPalette.darkGrey,
+                  sizedBoxH32,
+                  Text(
+                    S.of(context).searchPageCatchPhrase,
+                    style:
+                        RankaiTextStyles.heading3.copyWith(color: Colors.white),
+                    textAlign: TextAlign.center,
                   ),
-                  validator: FormBuilderValidators.compose(
-                    <FormFieldValidator<String>>[
-                      FormBuilderValidators.required(),
-                    ],
+                  sizedBoxH32,
+                  res.when(
+                    data: (List<Ranking> data) =>
+                        RankingsHistorySection(rankings: data),
+                    error: (Object error, StackTrace trace) =>
+                        Text(error.toString()),
+                    loading: () => const CircularProgressIndicator(),
                   ),
-                ),
-                const Spacer(),
-                RankaiElevatedButton.darkGrey(
-                  title: S.of(context).searchPageGoButton,
-                  onPressed: userInput.isEmpty
-                      ? null
-                      : () {
-                          ref.read(
-                            rankingDetailsProvider(userPrompt: userInput),
-                          );
-                          SearchingRoute(userPrompt: userInput).go(context);
-                        },
-                ),
-              ],
+                  sizedBoxH32,
+                  FormBuilderTextField(
+                    name: 'userPrompt',
+                    decoration: InputDecoration(
+                      hintText: S.of(context).searchPageFieldHint,
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                    keyboardType: TextInputType.text,
+                    style: RankaiTextStyles.pSmallRegular.copyWith(
+                      color: RankaiPalette.darkGrey,
+                    ),
+                    validator: FormBuilderValidators.compose(
+                      <FormFieldValidator<String>>[
+                        FormBuilderValidators.required(),
+                      ],
+                    ),
+                  ),
+                  sizedBoxH32,
+                  RankaiElevatedButton.darkGrey(
+                    title: S.of(context).searchPageGoButton,
+                    onPressed: userInput.isEmpty
+                        ? null
+                        : () {
+                            ref.read(
+                              rankingDetailsProvider(userPrompt: userInput),
+                            );
+                            SearchingRoute(userPrompt: userInput).go(context);
+                          },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

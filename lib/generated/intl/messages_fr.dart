@@ -13,17 +13,19 @@
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 
-final messages = new MessageLookup();
+final MessageLookup messages = new MessageLookup();
 
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'fr';
+  final Map<String, Function> messages =
+      _notInlinedMessages(_notInlinedMessages);
 
-  final messages = _notInlinedMessages(_notInlinedMessages);
+  String get localeName => 'fr';
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appDescription": MessageLookupByLibrary.simpleMessage(
-            "Obtenez tout type de classement comme les meilleurs films de 2023, les meilleurs livres pour entrepreneurs en quelques secondes grâce à Chat GPT 4."),
+          "Obtenez tout type de classement comme les meilleurs films de 2023, les meilleurs livres pour entrepreneurs en quelques secondes grâce à Chat GPT 4.",
+        ),
         "appTitle": MessageLookupByLibrary.simpleMessage("RankAI"),
         "entityCardAuthorUnknown":
             MessageLookupByLibrary.simpleMessage("Inconnu"),
@@ -38,21 +40,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "lastRankingsSectionTitlePartTwo":
             MessageLookupByLibrary.simpleMessage("classements"),
         "rankaiSlogan": MessageLookupByLibrary.simpleMessage(
-            "Des classements en quelques secondes"),
+          "Des classements en quelques secondes",
+        ),
         "resultPageOtherRankingButton":
             MessageLookupByLibrary.simpleMessage("Autre classement"),
         "resultPageTitle": MessageLookupByLibrary.simpleMessage("Et voilà"),
         "resultsPageError":
             MessageLookupByLibrary.simpleMessage("Une erreur est survenue"),
         "searchPageCatchPhrase": MessageLookupByLibrary.simpleMessage(
-            "Quel classement vous intéresse ?"),
+          "Quel classement vous intéresse ?",
+        ),
         "searchPageFieldHint": MessageLookupByLibrary.simpleMessage(
-            "Les 10 meilleurs livres pour entrepreneurs"),
+          "Les 10 meilleurs livres pour entrepreneurs",
+        ),
         "searchPageGoButton":
             MessageLookupByLibrary.simpleMessage("C\'est parti"),
         "searchingPageMessagePartOne": MessageLookupByLibrary.simpleMessage(
-            "Obtention du meilleur classement, "),
+          "Obtention du meilleur classement, ",
+        ),
         "searchingPageMessagePartTwo":
-            MessageLookupByLibrary.simpleMessage("juste pour vous...")
+            MessageLookupByLibrary.simpleMessage("juste pour vous..."),
       };
 }

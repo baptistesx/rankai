@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 final Provider<Client> clientProvider =
     Provider<Client>((ProviderRef<Client> ref) {
-  // final token = ref.watch(tokenProvider); // TODO
+
   final Environment env = Environment
       .fromEnv(); // Assurez-vous que cette classe existe ou modifiez selon votre implémentation
   return Client(env.openAiKey, env.backendUrl);

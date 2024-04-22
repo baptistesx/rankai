@@ -38,8 +38,8 @@ class RankingsHistory extends _$RankingsHistory {
       }
 
       // Décoder la chaîne JSON en liste d'objets Ranking
-      return (json.decode(rankingsHistoryString) as List)
-          .map((e) => Ranking.fromJson(e as Map<String, dynamic>))
+      return (json.decode(rankingsHistoryString) as List<dynamic>)
+          .map((dynamic e) => Ranking.fromJson(e as Map<String, dynamic>))
           .toList();
     } catch (e) {
       rethrow;

@@ -79,7 +79,8 @@ class RankingsHistorySection extends StatelessWidget {
                                           .format(e.value.promptDate),
                                       style: RankaiTextStyles.pSmallRegular
                                           .copyWith(
-                                              color: RankaiPalette.midGrey),
+                                        color: RankaiPalette.midGrey,
+                                      ),
                                     ),
                                   ),
                                   trailing:

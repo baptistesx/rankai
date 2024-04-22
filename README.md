@@ -12,65 +12,67 @@
     </a>
 </p>
 
-This project is develop in Flutter 3.19.4.
+## Project Overview
 
-# Flutter commands
+This project was developed using Flutter version 3.19.4. You can use FVM, ASDF, or direct Flutter SDK installation.
 
-Generate models
+### Setup
 
-```shell script
+To prepare your development environment, clone the repository and follow the steps below based on your development setup.
+
+#### Generate Models
+
+To generate models using build_runner:
+
+```shell
 dart run build_runner build --delete-conflicting-outputs
 ```
 
-Run app on specific environment:
+#### Configuration Files
 
-```shell script
+Place your `dev.json` file, which you should have received by email, into the following directory:
+
+assets/config/
+
+````
+
+#### Running the App
+
+To run the application on a specific environment, use one of the following commands:
+
+```shell
 flutter run --flavor dev --dart-define-from-file assets/config/dev.json
+````
 
-flutter run --flavor preprod --dart-define-from-file assets/config/preprod.json
+## Design and Architecture
 
-flutter run --flavor prod --dart-define-from-file assets/config/prod.json
-```
+A preliminary UX/UI design was created in Figma (approx. 1.5 hours of work). The design can be viewed here:
 
-# Firebase
+[View Figma Design](https://www.figma.com/file/5cE0Ejf1fW97x5YTjBsuMF/Labhouse?type=design&node-id=0%3A1&mode=design&t=jAQcjf8CPG74vs3G-1)
 
-### To add new [Firebase plugin](https://firebase.flutter.dev/):
+For rapid development, the architecture from a last project was reused, implementing Riverpod for state management. The app's routing is managed with go_router, and Firebase has been set up for the dev flavor.
 
-- Install [Firebase CLI](https://firebase.google.com/docs/cli#setup_update_cli)
-- Login to firebase
+VS Code has been used to develop the app.
 
-```shell script
-firebase login
-```
+Internationalization is supported with translations in both French and English.
 
-- Install the FlutterFire CLI by running the following command from any directory:
+SharedPreferences is used to store rankings requests history.
 
-```shell script
-dart pub global activate flutterfire_cli
-```
+Warning: make sure your phone/simulator/emulator is connected to internet.
 
-- From your Flutter project directory, run the following command:
+## Future Improvements
 
-```shell script
-flutter pub add <PLUGIN_NAME>
-```
+Although the current version is functional, numerous enhancements are possible:
 
-- From your Flutter project directory, run the following commands:
+- Enhanced prompt enrichment for varied ranking types and more user information
+- Full page history feature
+- Enhanced UX/UI, including additional animations
+- Splash screen implementation
+- Integration with an online translation manager like Crowdin
+- In-app prompts for users to rate the app
+- Subscription model for premium features
+- Add a internet connection checker
 
-**Dev**
+### Note
 
-```shell script
-./setup_firebase_flavors.sh dev
-```
-
-**PreProd**
-
-```shell script
-./setup_firebase_flavors.sh preprod
-```
-
-**Prod**
-
-```shell script
-./setup_firebase_flavors.sh prod
-```
+Due to time constraints, a CI/CD pipeline with Fastlane for Firebase Distribution or AppCenter was not set up but is planned for future iterations.

@@ -14,12 +14,12 @@ class RatingStarsRow extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        ...List.generate(
+        ...List<Icon>.generate(
           fullStars,
           (int index) => const Icon(Icons.star, color: Colors.amber),
         ),
         if (halfStar) const Icon(Icons.star_half, color: Colors.amber),
-        ...List.generate(
+        ...List<Icon>.generate(
           emptyStars,
           (int index) => const Icon(Icons.star_border, color: Colors.amber),
         ),

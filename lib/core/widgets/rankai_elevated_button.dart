@@ -32,32 +32,33 @@ class RankaiElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: ElevatedButton(
-          onPressed: isLoading ? null : onPressed,
-          style: ButtonStyle(
-            textStyle: MaterialStatePropertyAll(
-              RankaiTextStyles.pRegularBold,
-            ),
-            elevation: const MaterialStatePropertyAll(0.0),
-            shape: const MaterialStatePropertyAll(
-              StadiumBorder(
-                side: BorderSide(
-                  color: Colors.transparent,
-                ),
+        onPressed: isLoading ? null : onPressed,
+        style: ButtonStyle(
+          textStyle: MaterialStatePropertyAll<TextStyle?>(
+            RankaiTextStyles.pRegularBold,
+          ),
+          elevation: const MaterialStatePropertyAll<double?>(0.0),
+          shape: const MaterialStatePropertyAll<OutlinedBorder?>(
+            StadiumBorder(
+              side: BorderSide(
+                color: Colors.transparent,
               ),
             ),
-            backgroundColor: onPressed != null
-                ? MaterialStatePropertyAll(RankaiPalette.darkGrey)
-                : MaterialStatePropertyAll(RankaiPalette.midGrey),
-            foregroundColor: onPressed != null
-                ? MaterialStateProperty.all(Colors.white)
-                : null,
           ),
-          child: isLoading
-              ? const CircularProgressIndicator(color: Colors.white)
-              : Text(
-                  title,
-                  textAlign: TextAlign.center,
-                )),
+          backgroundColor: onPressed != null
+              ? MaterialStatePropertyAll<Color?>(RankaiPalette.darkGrey)
+              : MaterialStatePropertyAll<Color?>(RankaiPalette.midGrey),
+          foregroundColor: onPressed != null
+              ? MaterialStateProperty.all(Colors.white)
+              : null,
+        ),
+        child: isLoading
+            ? const CircularProgressIndicator(color: Colors.white)
+            : Text(
+                title,
+                textAlign: TextAlign.center,
+              ),
+      ),
     );
   }
 }
